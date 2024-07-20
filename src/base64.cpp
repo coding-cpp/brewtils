@@ -41,7 +41,9 @@ std::string brewtils::base64::encode(const std::string &data) noexcept(true) {
 std::string brewtils::base64::decode(const std::string &data) noexcept(false) {
   size_t len = data.size();
   if (len % 4 != 0) {
-    throw std::invalid_argument("Input is not valid Base64 encoding");
+    logger::error("Input is not valid Base64 encoding: " + data,
+                  "std::string brewtils::base64::decode(const std::string "
+                  "&data) noexcept(false)");
   }
 
   size_t padding = 0;
@@ -66,7 +68,9 @@ std::string brewtils::base64::decode(const std::string &data) noexcept(false) {
       const char *pos =
           std::strchr(brewtils::base64::BASE64_CHARS, currentChar);
       if (pos == nullptr)
-        throw std::invalid_argument("Invalid Base64 character");
+        logger::error("Invalid Base64 character: " + currentChar,
+                      "std::string brewtils::base64::decode(const std::string "
+                      "&data) noexcept(false)");
       num |= static_cast<int>(pos - brewtils::base64::BASE64_CHARS);
       countBits += 6;
     }

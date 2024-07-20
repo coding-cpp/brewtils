@@ -4,17 +4,21 @@
 #include <string>
 #include <vector>
 
+#include <logger/log.h>
+
 namespace brewtils {
 
 namespace os {
 
 namespace dir {
 
+bool exists(const std::string &path) noexcept(true);
+
 void create(const std::string &path) noexcept(false);
 
 std::string current() noexcept(true);
 
-std::vector<std::string> list(const std::string &path) noexcept(true);
+std::vector<std::string> list(const std::string &path) noexcept(false);
 
 void remove(const std::string &path) noexcept(false);
 

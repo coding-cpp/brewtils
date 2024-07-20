@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 
+#include <logger/log.h>
+
 namespace brewtils {
 
 namespace os {

@@ -1,8 +1,9 @@
 #pragma once
 
 #include <cstring>
-#include <stdexcept>
 #include <string>
+
+#include <logger/log.h>
 
 namespace brewtils {
 
