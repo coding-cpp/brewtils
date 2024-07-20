@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
   std::cout << decoded << std::endl;
   hr();
 
-  for (std::string file : brewtils::os::dir::list("/Users/adit")) {
+  for (std::string file : brewtils::os::dir::list("/")) {
     std::cout << file << std::endl;
   }
   hr();
