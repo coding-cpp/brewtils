@@ -16,15 +16,19 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(USE_INSTALL_RESOURCE_PATH "Set resource path to install location" OFF)
 
 file(GLOB SOURCES "src/*.cpp" "src/**/*.cpp")
+file(GLOB LIB_SOURCES "lib/**/src/*.cpp" "lib/**/src/**/*.cpp")
 
 add_executable(brewtils
   example/main.cpp
 
   ${SOURCES}
+  ${LIB_SOURCES}
 )
 
 target_include_directories(brewtils
   PUBLIC
     $<INSTALL_INTERFACE:include>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:lib/logger/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/lib/logger/include>
 )
