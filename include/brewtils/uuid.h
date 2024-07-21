@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <iomanip>
 #include <random>
 #include <sstream>
