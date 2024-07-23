@@ -1,28 +1,17 @@
-#include <iostream>
-
 #include <brewtils/base64.h>
+#include <brewtils/env.h>
 #include <brewtils/os.h>
 #include <brewtils/string.h>
 #include <brewtils/url.h>
 #include <brewtils/uuid.h>
 
-void hr() {
-  std::cout << std::endl
-            << "----------------------------------------" << std::endl
-            << std::endl;
-}
-
 int main(int argc, char **argv) {
+  logger::info("USER: " + brewtils::env::get("USER"));
 
-  hr();
+  logger::info(brewtils::uuid::v4());
 
-  std::cout << brewtils::uuid::v4() << std::endl;
-  hr();
-
-  std::cout << brewtils::uuid::v5("6ba7b810-9dad-11d1-80b4-00c04fd430c8",
-                                  "hello world")
-            << std::endl;
-  hr();
+  logger::info(brewtils::uuid::v5("6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+                                  "hello world"));
 
   std::string data =
       "   {\"widget\" : {\"debug\" : \"on\",      \"window\" : {        "
@@ -37,35 +26,28 @@ int main(int argc, char **argv) {
       "\"alignment\" : \"center\",        \"onMouseUp\" : \"sun1.opacity = "
       "(sun1.opacity / 100) * 90;\"      }    }  }   ";
   std::string encoded = brewtils::base64::encode(data);
-  std::cout << encoded << std::endl;
-  hr();
+  logger::info(encoded);
 
   std::string decoded = brewtils::base64::decode(encoded);
-  std::cout << decoded << std::endl;
-  hr();
+  logger::info(decoded);
 
   std::string trimmedData = brewtils::string::trim(data);
-  std::cout << trimmedData << std::endl;
-  hr();
+  logger::info(trimmedData);
 
   std::vector<std::string> strings = brewtils::string::split(data, " ");
   std::string joined = brewtils::string::join(strings, "");
-  std::cout << joined << std::endl;
-  hr();
+  logger::info(joined);
 
   data = "https://www.google.com/search?q=hello+world";
   encoded = brewtils::url::encode(data);
-  std::cout << encoded << std::endl;
-  hr();
+  logger::info(encoded);
 
   decoded = brewtils::url::decode(encoded);
-  std::cout << decoded << std::endl;
-  hr();
+  logger::info(decoded);
 
   for (std::string file : brewtils::os::dir::list("/")) {
-    std::cout << file << std::endl;
+    logger::info(file);
   }
-  hr();
 
   return EXIT_SUCCESS;
 }
