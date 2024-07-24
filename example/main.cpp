@@ -7,7 +7,7 @@
 
 int main(int argc, char **argv) {
   brewtils::env::init("../.env");
-  logger::info("USER: " + brewtils::env::get("USER"));
+  logger::info("USER: " + brewtils::env::get("USER", "adit"));
 
   logger::info(brewtils::uuid::v4());
 
