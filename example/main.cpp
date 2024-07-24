@@ -6,6 +6,7 @@
 #include <brewtils/uuid.h>
 
 int main(int argc, char **argv) {
+  brewtils::env::init("../.env");
   logger::info("USER: " + brewtils::env::get("USER"));
 
   logger::info(brewtils::uuid::v4());
