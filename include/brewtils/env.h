@@ -7,11 +7,11 @@ namespace brewtils {
 
 namespace env {
 
-void init(std::string path = brewtils::os::dir::current()) noexcept(true);
+void init(std::string path = brewtils::os::dir::current()) noexcept(false);
 
 std::string get(const std::string &key) noexcept(true);
 
-void set(const std::string &key, const std::string &value) noexcept(true);
+void set(const std::string &key, const std::string &value) noexcept(false);
 
 } // namespace env
 
