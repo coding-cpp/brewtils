@@ -19,7 +19,10 @@ void brewtils::env::init(std::string path) noexcept(false) {
     }
 
     key = line.substr(0, pos);
+    key = brewtils::string::trim(key);
     value = line.substr(pos + 1);
+    value = brewtils::string::split(value, "#")[0];
+    value = brewtils::string::trim(value);
     brewtils::env::set(key, value);
   }
 
