@@ -10,7 +10,7 @@ namespace env {
 void init(std::string path = brewtils::os::dir::current()) noexcept(false);
 
 std::string get(const std::string &key,
-                const std::string &defaultValue = nullptr) noexcept(true);
+                const std::string &defaultValue = "") noexcept(true);
 
 void set(const std::string &key, const std::string &value) noexcept(false);
 
