@@ -6,7 +6,7 @@ void brewtils::env::init(std::string path) noexcept(false) {
   }
 
   if (!brewtils::os::file::exists(path)) {
-    logger::error("No .env file found at " + path);
+    logger::warning("No .env file found at " + path + ", skipping...");
     return;
   }
 
