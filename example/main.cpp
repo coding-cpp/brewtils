@@ -50,5 +50,10 @@ int main(int argc, char **argv) {
     logger::info(file);
   }
 
+  logger::info("---------------------------");
+  for (std::string file : brewtils::os::dir::tree("../")) {
+    logger::info(file);
+  }
+
   return EXIT_SUCCESS;
 }
