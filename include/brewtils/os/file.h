@@ -20,6 +20,8 @@ std::string read(const std::string &path) noexcept(false);
 
 void remove(const std::string &path) noexcept(false);
 
+uint32_t size(const std::string &path) noexcept(false);
+
 } // namespace file
 
 } // namespace os
