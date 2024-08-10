@@ -10,6 +10,8 @@ namespace os {
 std::string joinPath(const std::string &path1,
                      const std::string &path2) noexcept(true);
 
+std::string basePath(const std::string &path) noexcept(true);
+
 } // namespace os
 
 } // namespace brewtils
