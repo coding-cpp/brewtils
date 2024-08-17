@@ -1,7 +1,14 @@
 #include <brewtils/sys.h>
 
 size_t brewtils::sys::send(int sockfd, const void *buf, size_t len, int flags) {
-  return ::send(sockfd, buf, len, flags);
+  try {
+    return ::send(sockfd, buf, len, flags);
+  } catch (const std::exception &e) {
+    logger::warning("Error sending data: " + std::string(e.what()));
+  } catch (...) {
+    logger::warning("Error sending data: unknown error");
+  }
+  return -1;
 }
 
 size_t brewtils::sys::recv(int sockfd, void *buf, size_t len, int flags) {
