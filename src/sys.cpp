@@ -20,3 +20,13 @@ int brewtils::sys::bind(int sockfd, const struct sockaddr *addr,
                         socklen_t addrlen) noexcept(true) {
   return ::bind(sockfd, addr, addrlen);
 }
+
+void brewtils::sys::exitIf(int signal) noexcept(true) {
+  std::signal(signal, [](int signal) {
+    logger::info("Received signal: " + std::to_string(signal));
+    logger::warning("Exiting application now");
+    std::exit(0);
+  });
+
+  return;
+}

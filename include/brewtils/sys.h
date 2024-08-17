@@ -1,6 +1,9 @@
 #pragma once
 
+#include <csignal>
 #include <sys/socket.h>
+
+#include <logger/log.h>
 
 namespace brewtils {
 
@@ -16,6 +19,8 @@ int listen(int sockfd, int backlog) noexcept(true);
 
 int bind(int sockfd, const struct sockaddr *addr,
          socklen_t addrlen) noexcept(true);
+
+void exitIf(int signal) noexcept(true);
 
 } // namespace sys
 
