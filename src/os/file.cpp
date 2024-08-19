@@ -38,8 +38,20 @@ std::string brewtils::os::file::read(const std::string &path) noexcept(false) {
 
   std::string content;
   std::string line;
-  while (std::getline(file, line)) {
-    content += line + "\n";
+
+  try {
+    while (std::getline(file, line)) {
+      content += line + "\n";
+    }
+  } catch (const std::exception &e) {
+    logger::error("Failed to read file: " + path + " - " +
+                      std::string(e.what()),
+                  "std::string brewtils::os::file::read(const "
+                  "std::string &path) noexcept(false)");
+  } catch (...) {
+    logger::error("Failed to read file: " + path,
+                  "std::string brewtils::os::file::read(const "
+                  "std::string &path) noexcept(false)");
   }
 
   file.close();
