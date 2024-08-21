@@ -68,7 +68,8 @@ std::string brewtils::base64::decode(const std::string &data) noexcept(false) {
       const char *pos =
           std::strchr(brewtils::base64::BASE64_CHARS, currentChar);
       if (pos == nullptr)
-        logger::error("Invalid Base64 character: " + currentChar,
+        logger::error("Invalid Base64 character: " +
+                          std::string(1, currentChar),
                       "std::string brewtils::base64::decode(const std::string "
                       "&data) noexcept(false)");
       num |= static_cast<int>(pos - brewtils::base64::BASE64_CHARS);
