@@ -31,12 +31,12 @@ void brewtils::env::init(std::string path) noexcept(false) {
 
 std::string brewtils::env::get(const std::string &key,
                                const std::string &defaultValue) noexcept(true) {
-  std::string value = getenv(key.c_str());
-  if (value.empty()) {
-    value = defaultValue;
+  char *value = getenv(key.c_str());
+  if (value == nullptr) {
+    return defaultValue;
   }
 
-  return value;
+  return std::string(value);
 }
 
 void brewtils::env::set(const std::string &key,
