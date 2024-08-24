@@ -33,6 +33,8 @@ std::string brewtils::env::get(const std::string &key,
                                const std::string &defaultValue) noexcept(true) {
   char *value = getenv(key.c_str());
   if (value == nullptr) {
+    logger::warning("Environment variable '" + key +
+                    "' not found, using default value: '" + defaultValue + "'");
     return defaultValue;
   }
 
