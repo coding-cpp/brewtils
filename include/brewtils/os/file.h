@@ -2,9 +2,13 @@
 
 #include <filesystem>
 #include <fstream>
+#include <map>
+#include <set>
 #include <string>
 
 #include <logger/log.h>
+
+#include <brewtils/string.h>
 
 namespace brewtils {
 
@@ -21,6 +25,8 @@ std::string read(const std::string &path) noexcept(false);
 void remove(const std::string &path) noexcept(false);
 
 uint32_t size(const std::string &path) noexcept(false);
+
+std::string getMimeType(const std::string &path) noexcept(true);
 
 } // namespace file
 

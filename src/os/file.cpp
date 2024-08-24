@@ -1,5 +1,14 @@
 #include <brewtils/os/file.h>
 
+std::map<std::string, std::set<std::string>> MIME_TYPES = {
+    {"text", {"htm", "html", "css", "log", "md", "csv"}},
+    {"image",
+     {"png", "jpg", "jpeg", "gif", "tif", "bmp", "webp", "apng", "avif"}},
+    {"application", {"pdf", "json", "zip", "rtf", "xml"}},
+    {"audio", {"mp3", "wav", "aac", "wma", "midi"}},
+    {"video", {"mp4", "webm", "ogg"}},
+    {"font", {"ttf", "otf", "woff"}}};
+
 bool brewtils::os::file::exists(const std::string &path) noexcept(true) {
   return std::filesystem::exists(path) &&
          std::filesystem::is_regular_file(path);
@@ -84,4 +93,34 @@ uint32_t brewtils::os::file::size(const std::string &path) noexcept(false) {
   }
 
   return std::filesystem::file_size(path);
+}
+
+std::string
+brewtils::os::file::getMimeType(const std::string &path) noexcept(true) {
+  std::string extension = path.substr(path.find_last_of('.') + 1);
+  extension = brewtils::string::lower(extension);
+
+  // Default MIME types
+  for (const std::pair<const std::string, std::set<std::string>> &it :
+       MIME_TYPES) {
+    if (it.second.find(extension) != it.second.end()) {
+      return it.first + "/" + extension;
+    }
+  }
+
+  // Special cases handling
+  if (extension == "js") {
+    return "text/javascript";
+  } else if (extension == "svg") {
+    return "image/svg+xml";
+  } else if (extension == "ico") {
+    return "image/x-icon";
+  } else if (extension == "txt") {
+    return "text/plain";
+  } else if (extension == "mp3") {
+    return "audio/mpeg";
+  }
+
+  // Default MIME type -> download
+  return "application/octet-stream";
 }

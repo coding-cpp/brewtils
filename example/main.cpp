@@ -55,5 +55,8 @@ int main(int argc, char **argv) {
     logger::info(file);
   }
 
+  logger::info("---------------------------");
+  logger::info(brewtils::os::file::getMimeType("test.txt"));
+
   return EXIT_SUCCESS;
 }
