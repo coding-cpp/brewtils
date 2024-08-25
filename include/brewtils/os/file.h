@@ -24,7 +24,7 @@ std::string read(const std::string &path) noexcept(false);
 
 void remove(const std::string &path) noexcept(false);
 
-uint32_t size(const std::string &path) noexcept(false);
+int64_t size(const std::string &path) noexcept(false);
 
 std::string getMimeType(const std::string &path) noexcept(true);
 

@@ -85,7 +85,7 @@ void brewtils::os::file::remove(const std::string &path) noexcept(false) {
                   "noexcept(false)");
 }
 
-uint32_t brewtils::os::file::size(const std::string &path) noexcept(false) {
+int64_t brewtils::os::file::size(const std::string &path) noexcept(false) {
   if (!brewtils::os::file::exists(path)) {
     logger::error("File does not exist: " + path,
                   "uint32_t brewtils::os::file::size(const std::string &path) "
