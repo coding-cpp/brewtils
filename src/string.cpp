@@ -17,7 +17,7 @@ std::string
 brewtils::string::join(const std::set<std::string> &strings,
                        const std::string &delimiter) noexcept(true) {
   std::string result;
-  auto it = strings.begin();
+  std::set<std::string>::iterator it = strings.begin();
   result += *it;
   ++it;
 

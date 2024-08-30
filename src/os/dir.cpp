@@ -27,7 +27,8 @@ brewtils::os::dir::list(const std::string &path) noexcept(false) {
   }
 
   std::vector<std::string> files;
-  for (const auto &entry : std::filesystem::directory_iterator(path)) {
+  for (const std::filesystem::directory_entry &entry :
+       std::filesystem::directory_iterator(path)) {
     files.push_back(entry.path().string());
   }
   return files;
