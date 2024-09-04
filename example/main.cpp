@@ -1,4 +1,5 @@
 #include <brewtils/base64.h>
+#include <brewtils/date.h>
 #include <brewtils/env.h>
 #include <brewtils/os.h>
 #include <brewtils/string.h>
@@ -57,6 +58,9 @@ int main(int argc, char **argv) {
 
   logger::info("---------------------------");
   logger::info(brewtils::os::file::getMimeType("test.txt"));
+
+  logger::info("---------------------------");
+  logger::info(brewtils::date::getCurrentUTC());
 
   return EXIT_SUCCESS;
 }
