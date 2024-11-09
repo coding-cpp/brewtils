@@ -57,8 +57,16 @@ brewtils::os::dir::tree(const std::string &path) noexcept(false) {
   std::set<std::string> files;
   for (const std::filesystem::directory_entry &entry :
        std::filesystem::recursive_directory_iterator(path)) {
-    relativePath = std::filesystem::relative(entry.path(), path).string();
-    files.insert(relativePath);
+    try {
+      if (!entry.is_regular_file() && !entry.is_directory()) {
+        continue;
+      }
+
+      relativePath = std::filesystem::relative(entry.path(), path).string();
+      files.insert(relativePath);
+    } catch (const std::filesystem::filesystem_error &e) {
+      continue;
+    }
   }
 
   return files;

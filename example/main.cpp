@@ -57,6 +57,10 @@ int main(int argc, char **argv) {
   }
 
   logger::info("---------------------------");
+  logger::info(brewtils::os::isDocker() ? "Running in Docker"
+                                        : "Not in Docker");
+
+  logger::info("---------------------------");
   logger::info(brewtils::os::file::getMimeType("test.txt"));
 
   logger::info("---------------------------");
