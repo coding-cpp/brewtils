@@ -12,6 +12,8 @@ std::string joinPath(const std::string &path1,
 
 std::string basePath(const std::string &path) noexcept(true);
 
+bool isDocker() noexcept(true);
+
 } // namespace os
 
 } // namespace brewtils

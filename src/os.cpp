@@ -18,3 +18,7 @@ std::string brewtils::os::basePath(const std::string &path) noexcept(true) {
   size_t pos = base.find_last_of('/');
   return base.substr(pos + 1, base.size());
 }
+
+bool brewtils::os::isDocker() noexcept(true) {
+  return brewtils::os::file::exists("/.dockerenv");
+}
